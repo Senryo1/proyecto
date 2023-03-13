@@ -94,3 +94,13 @@ class regresion:
     
     def cargapd (self,lugar):
         return pd.read_csv(lugar),pd.read_csv(lugar).iloc[-1].to_dict()
+    
+    def proyecc (self,parametros,data):
+        x = data["Overall Quality"].values
+        x =pd.DataFrame(x)
+        ones = np.ones((x.shape[0], 1))
+        ones= pd.DataFrame(ones)
+        x = np.hstack((x,ones))
+        x = pd.DataFrame(x)
+        prediccion = np.dot(x.values,[parametros['b1'],parametros['b0']])
+        return pd.DataFrame({ 'x':data.iloc[:,1],'prediccion':prediccion})
