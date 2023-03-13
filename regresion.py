@@ -86,10 +86,11 @@ class regresion:
         modelo.plot(x="Epoch", y="Error",color='red')
         plt.xlabel("Epoch")
         plt.ylabel("Error")
-        m=7
-        print(4071.106782+29204.812826*m)
         modelo.to_csv("Modelo.csv",index=False)
         Parametros = modelo.iloc[-1].to_dict()
         Parametros
         Parametros["b0"] 
-        pass
+        return Parametros
+    
+    def cargapd (self,lugar):
+        return pd.read_csv(lugar),pd.read_csv(lugar).iloc[-1].to_dict()
